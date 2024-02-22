@@ -1,0 +1,20 @@
+[package]
+name = "falling-sand"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+bevy = "0.13"
+
+[features]
+default = ["fast-compile"]
+fast-compile = ["bevy/dynamic_linking"]
+debug = []
+
+# Enable a small amount of optimization in debug mode
+[profile.dev]
+opt-level = 1
+
+# Enable high optimization for dependencies
+[profile.dev.package."*"]
+opt-level = 3
