@@ -1,4 +1,7 @@
-use bevy::prelude::*;
+use bevy::{prelude::*, render::camera::ScalingMode};
+
+/// How many pixels equals one world unit
+const PIXEL_SCALE: f32 = 8.0;
 
 pub struct CameraPlugin;
 
@@ -9,5 +12,9 @@ impl Plugin for CameraPlugin {
 }
 
 fn spawn_camera(mut commands: Commands) {
-    commands.spawn(Camera2dBundle::default());
+    // Manually create the default here because some inner struct defaults are
+    // different than the defaults that the Camera2dBundle sets
+    let mut camera = Camera2dBundle::default();
+    camera.projection.scaling_mode = ScalingMode::WindowSize(PIXEL_SCALE);
+    commands.spawn(camera);
 }

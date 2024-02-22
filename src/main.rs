@@ -1,5 +1,6 @@
 mod camera;
 mod debug;
+mod physics;
 mod sand;
 
 use bevy::prelude::*;
@@ -7,6 +8,7 @@ use bevy::prelude::*;
 use camera::CameraPlugin;
 #[cfg(feature = "debug")]
 use debug::DebugPlugin;
+use physics::PhysicsPlugin;
 use sand::SandPlugin;
 
 fn main() {
@@ -16,7 +18,9 @@ fn main() {
     app.add_plugins(DefaultPlugins);
 
     // User defined
-    app.add_plugins(CameraPlugin).add_plugins(SandPlugin);
+    app.add_plugins(CameraPlugin)
+        .add_plugins(PhysicsPlugin)
+        .add_plugins(SandPlugin);
 
     #[cfg(feature = "debug")]
     app.add_plugins(DebugPlugin);

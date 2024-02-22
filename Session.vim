@@ -13,18 +13,18 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +8 Cargo.toml
-badd +19 src/main.rs
-badd +5 README.md
-badd +1 src/camera.rs
-badd +12 src/debug.rs
-badd +27 src/sand.rs
+badd +0 ~/repos/falling-sand/Cargo.toml
+badd +0 ~/repos/falling-sand/src/main.rs
+badd +1 ~/repos/falling-sand/src/sand.rs
+badd +1 ~/repos/falling-sand/src/physics.rs
+badd +6 ~/repos/falling-sand/src/debug.rs
+badd +0 ~/repos/falling-sand/src/camera.rs
 argglobal
 %argdel
 tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
 tabrewind
-edit src/main.rs
+edit ~/repos/falling-sand/src/main.rs
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -44,7 +44,7 @@ set winwidth=1
 exe 'vert 1resize ' . ((&columns * 141 + 141) / 282)
 exe 'vert 2resize ' . ((&columns * 140 + 141) / 282)
 argglobal
-balt src/camera.rs
+balt ~/repos/falling-sand/Cargo.toml
 setlocal fdm=indent
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -53,19 +53,19 @@ setlocal fdl=10
 setlocal fml=1
 setlocal fdn=10
 setlocal fen
-let s:l = 19 - ((18 * winheight(0) + 34) / 68)
+let s:l = 1 - ((0 * winheight(0) + 34) / 68)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 19
-normal! 056|
+keepjumps 1
+normal! 0
 wincmd w
 argglobal
-if bufexists(fnamemodify("Cargo.toml", ":p")) | buffer Cargo.toml | else | edit Cargo.toml | endif
+if bufexists(fnamemodify("~/repos/falling-sand/Cargo.toml", ":p")) | buffer ~/repos/falling-sand/Cargo.toml | else | edit ~/repos/falling-sand/Cargo.toml | endif
 if &buftype ==# 'terminal'
-  silent file Cargo.toml
+  silent file ~/repos/falling-sand/Cargo.toml
 endif
-balt src/main.rs
+balt ~/repos/falling-sand/src/main.rs
 setlocal fdm=indent
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -74,38 +74,17 @@ setlocal fdl=10
 setlocal fml=1
 setlocal fdn=10
 setlocal fen
-let s:l = 8 - ((7 * winheight(0) + 34) / 68)
+let s:l = 1 - ((0 * winheight(0) + 34) / 68)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 8
+keepjumps 1
 normal! 0
 wincmd w
 exe 'vert 1resize ' . ((&columns * 141 + 141) / 282)
 exe 'vert 2resize ' . ((&columns * 140 + 141) / 282)
 tabnext
-edit src/sand.rs
-argglobal
-setlocal fdm=indent
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=10
-setlocal fml=1
-setlocal fdn=10
-setlocal fen
-13
-normal! zo
-23
-normal! zo
-let s:l = 27 - ((26 * winheight(0) + 34) / 68)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 27
-normal! 019|
-tabnext
-edit src/camera.rs
+edit ~/repos/falling-sand/src/physics.rs
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -125,7 +104,7 @@ set winwidth=1
 exe 'vert 1resize ' . ((&columns * 141 + 141) / 282)
 exe 'vert 2resize ' . ((&columns * 140 + 141) / 282)
 argglobal
-balt src/debug.rs
+balt ~/repos/falling-sand/src/sand.rs
 setlocal fdm=indent
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -134,21 +113,19 @@ setlocal fdl=10
 setlocal fml=1
 setlocal fdn=10
 setlocal fen
-6
-normal! zo
-let s:l = 12 - ((11 * winheight(0) + 34) / 68)
+let s:l = 1 - ((0 * winheight(0) + 34) / 68)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 12
-normal! 046|
+keepjumps 1
+normal! 0
 wincmd w
 argglobal
-if bufexists(fnamemodify("src/debug.rs", ":p")) | buffer src/debug.rs | else | edit src/debug.rs | endif
+if bufexists(fnamemodify("~/repos/falling-sand/src/sand.rs", ":p")) | buffer ~/repos/falling-sand/src/sand.rs | else | edit ~/repos/falling-sand/src/sand.rs | endif
 if &buftype ==# 'terminal'
-  silent file src/debug.rs
+  silent file ~/repos/falling-sand/src/sand.rs
 endif
-balt src/camera.rs
+balt ~/repos/falling-sand/src/physics.rs
 setlocal fdm=indent
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -157,22 +134,76 @@ setlocal fdl=10
 setlocal fml=1
 setlocal fdn=10
 setlocal fen
-6
-normal! zo
-12
-normal! zo
-13
-normal! zo
-let s:l = 12 - ((11 * winheight(0) + 34) / 68)
+let s:l = 1 - ((0 * winheight(0) + 34) / 68)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 12
-normal! 048|
+keepjumps 1
+normal! 0
 wincmd w
 exe 'vert 1resize ' . ((&columns * 141 + 141) / 282)
 exe 'vert 2resize ' . ((&columns * 140 + 141) / 282)
-tabnext 2
+tabnext
+edit ~/repos/falling-sand/src/camera.rs
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
+wincmd t
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe 'vert 1resize ' . ((&columns * 141 + 141) / 282)
+exe 'vert 2resize ' . ((&columns * 140 + 141) / 282)
+argglobal
+balt ~/repos/falling-sand/src/debug.rs
+setlocal fdm=indent
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=10
+setlocal fml=1
+setlocal fdn=10
+setlocal fen
+let s:l = 1 - ((0 * winheight(0) + 34) / 68)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 1
+normal! 0
+wincmd w
+argglobal
+if bufexists(fnamemodify("~/repos/falling-sand/src/debug.rs", ":p")) | buffer ~/repos/falling-sand/src/debug.rs | else | edit ~/repos/falling-sand/src/debug.rs | endif
+if &buftype ==# 'terminal'
+  silent file ~/repos/falling-sand/src/debug.rs
+endif
+balt ~/repos/falling-sand/src/camera.rs
+setlocal fdm=indent
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=10
+setlocal fml=1
+setlocal fdn=10
+setlocal fen
+let s:l = 6 - ((5 * winheight(0) + 34) / 68)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 6
+normal! 0
+wincmd w
+exe 'vert 1resize ' . ((&columns * 141 + 141) / 282)
+exe 'vert 2resize ' . ((&columns * 140 + 141) / 282)
+tabnext 3
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif
