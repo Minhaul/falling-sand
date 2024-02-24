@@ -4,10 +4,30 @@ pub struct DebugPlugin;
 
 impl Plugin for DebugPlugin {
     fn build(&self, app: &mut App) {
+        #[cfg(not(feature = "gizmos"))]
+        app.add_systems(Startup, disable_gizmos);
+        #[cfg(feature = "gizmos")]
+        app.add_systems(Startup, configure_gizmos);
+        #[cfg(feature = "debug")]
         app.add_systems(Update, print_window_resolution);
     }
 }
 
+#[allow(unused)]
+fn disable_gizmos(mut config_store: ResMut<GizmoConfigStore>) {
+    let (config, _) = config_store.config_mut::<DefaultGizmoConfigGroup>();
+
+    config.enabled = false;
+}
+
+#[allow(unused)]
+fn configure_gizmos(mut config_store: ResMut<GizmoConfigStore>) {
+    let (config, _) = config_store.config_mut::<DefaultGizmoConfigGroup>();
+
+    config.line_width = 1.0;
+}
+
+#[allow(unused)]
 fn print_window_resolution(
     mut resized_event_reader: EventReader<WindowResized>,
     query: Query<&OrthographicProjection>,

@@ -7,6 +7,7 @@ use crate::{
     collision_detection::Collider,
     physics::{Acceleration, MovingObjectBundle, Velocity},
     schedule::RunningSet,
+    world_grid::{AliasAxis, GlobalAlias, LocalAlias},
 };
 
 /// Grains of sand are squares, how big is an edge?
@@ -59,21 +60,22 @@ fn spawn_sand(
                     ))),
                 },
                 SandGrain,
+                GlobalAlias::new(AliasAxis::All),
             ))
             .with_children(|parent| {
                 parent.spawn((
                     MaterialMesh2dBundle {
-                        mesh: Mesh2dHandle(meshes.add(Rectangle::new(
-                            SAND_GRAIN_EDGE_SIZE / 2.0,
-                            SAND_GRAIN_EDGE_SIZE / 2.0,
-                        ))),
+                        mesh: Mesh2dHandle(
+                            meshes.add(Rectangle::new(SAND_GRAIN_EDGE_SIZE, SAND_GRAIN_EDGE_SIZE)),
+                        ),
                         material: materials.add(Color::rgb(0.5, 1.0, 0.5)),
                         transform: Transform::from_translation(Vec3::ZERO),
                         ..default()
                     },
                     // Collision will happen based on the visual mesh's location,
                     // not the underlying moving physics object's location.
-                    Collider::new(SAND_GRAIN_EDGE_SIZE / 2.0),
+                    Collider::new(SAND_GRAIN_EDGE_SIZE),
+                    LocalAlias,
                 ));
             });
     }

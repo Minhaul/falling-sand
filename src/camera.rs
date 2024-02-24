@@ -1,13 +1,14 @@
 use bevy::{prelude::*, render::camera::ScalingMode};
 
 /// How many pixels equals one world unit
-const PIXEL_SCALE: f32 = 60.0;
+const PIXEL_SCALE: f32 = 2.0;
 
 pub struct CameraPlugin;
 
 impl Plugin for CameraPlugin {
     fn build(&self, app: &mut App) {
-        app.add_systems(Startup, spawn_camera);
+        app.insert_resource(Msaa::Off)
+            .add_systems(Startup, spawn_camera);
     }
 }
 

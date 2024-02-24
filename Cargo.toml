@@ -10,6 +10,7 @@ bevy = "0.13"
 default = ["fast-compile"]
 fast-compile = ["bevy/dynamic_linking"]
 debug = []
+gizmos = []
 
 # Enable a small amount of optimization in debug mode
 [profile.dev]
