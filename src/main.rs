@@ -1,6 +1,7 @@
 mod camera;
 mod collision_detection;
 mod debug;
+mod input;
 mod physics;
 mod sand;
 mod schedule;
@@ -11,6 +12,7 @@ use bevy::prelude::*;
 
 use camera::CameraPlugin;
 use debug::DebugPlugin;
+use input::UserInputPlugin;
 use physics::PhysicsPlugin;
 use sand::SandPlugin;
 use schedule::SchedulePlugin;
@@ -26,6 +28,7 @@ fn main() {
     // User defined
     app.add_plugins(CameraPlugin)
         .add_plugins(DebugPlugin)
+        .add_plugins(UserInputPlugin)
         .add_plugins(PhysicsPlugin)
         .add_plugins(SandPlugin)
         .add_plugins(SchedulePlugin)

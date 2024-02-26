@@ -31,15 +31,8 @@ pub struct SandPlugin;
 impl Plugin for SandPlugin {
     fn build(&self, app: &mut App) {
         app.add_event::<SpawnSandEvent>()
-            .add_systems(PostStartup, spawn_test_grain)
             .add_systems(Update, spawn_sand.in_set(RunningSet::SpawnEntities));
     }
-}
-
-fn spawn_test_grain(mut spawn_sand_event_writer: EventWriter<SpawnSandEvent>) {
-    spawn_sand_event_writer.send(SpawnSandEvent {
-        location: Vec2::ZERO,
-    });
 }
 
 fn spawn_sand(
